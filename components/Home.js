@@ -56,6 +56,14 @@ function Home() {
       });
   }, []);
 
+  const trimText = (text) => {
+    if (text.length > 250) {
+      return `${text.substring(0, 250)}...`;
+    } else {
+      return text;
+    }
+  };
+
   const movies = moviesData.map((data, i) => {
     const isLiked = likedMovies.some((movie) => movie === data.title);
     return (
@@ -64,7 +72,7 @@ function Home() {
         updateLikedMovies={updateLikedMovies}
         isLiked={isLiked}
         title={data.original_title}
-        overview={`${data.overview.substring(0, 247)}...`}
+        overview={trimText(data.overview)}
         poster={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
         voteAverage={data.vote_average}
         voteCount={data.vote_count}
