@@ -51,7 +51,7 @@ function Home() {
     fetch("http://localhost:3000/movies")
       .then((response) => response.json())
       .then((data) => {
-        setMoviesData([...data.movies.results]);
+        setMoviesData([...data.movies]);
         console.log(moviesData[0]);
       });
   }, []);
